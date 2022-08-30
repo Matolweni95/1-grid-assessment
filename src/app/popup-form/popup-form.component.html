@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Add HitHub Issue</h1>
+<form [formGroup]="FormGroup" class="example-form">
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput  formControlName="title"> 
+      </mat-form-field>
+    <br>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Body</mat-label>
+        <input matInput  formControlName="body"> 
+      </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Client:</mat-label>
+        <mat-select required [(ngModel)]="selectedClient" name="class" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let item of client" [value]="item.viewValue">
+            {{item.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Priority:</mat-label>
+        <mat-select required [(ngModel)]="selectedPriority" name="class" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let item of priority" [value]="item.viewValue">
+            {{item.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Type:</mat-label>
+        <mat-select required [(ngModel)]="selectedType" name="class" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let item of type" [value]="item.viewValue">
+            {{item.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <br>
+  
+    <br>
+    
+
+    <div mat-dialog-actions>
+      <button mat-button color="primary" class="btn" (click)="postdata(FormGroup, selectedClient, selectedType, selectedPriority)">Submit</button>
+      <button mat-button color="warn" class="btn-warn" (click)="close()">Close</button>
+    </div>
+    
+  
+  </form>

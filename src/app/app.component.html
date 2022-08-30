@@ -1,0 +1,9 @@
+<body>
+<div class="containers">
+  <app-account *ngIf="session; else auth" [session]="session"></app-account>
+  <ng-template #auth>
+    <app-auth></app-auth>
+  </ng-template>
+</div>
+      
+</body>

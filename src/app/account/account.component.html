@@ -1,0 +1,61 @@
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+        <button mat-button class="button block" (click)="signOut()">Sign Out</button>
+    </div>
+</nav>
+<body>
+    
+<div class="container">
+    <div class="btns">
+   
+        <button mat-button color="primary" (click)="openDialog()">Add Issue</button>
+    </div> 
+  <table class="table" id='tab'>
+      <thead>
+      <tr>
+          <th scope="col">Number</th>
+          <th scope="col">Title</th>
+          <th scope="col">Discription Body</th>
+          <th scope="col">Client</th>
+          <th scope="col">Priority</th>
+          <th scope="col">Type</th>
+          <th scope="col">Assigned to</th>
+          <th scope="col">Status</th>
+      </tr>
+      </thead>
+      <tbody >
+      <tr *ngFor="let items of data, let i=index let c=count">
+          <td>{{i+1}}</td>
+          <td>{{ items.title }}</td>
+          <td>{{ items.body }}</td>
+          <!-- filter data to fit right columns -->
+          <td>
+            <!-- inner loop to loop through the inner array -->
+              <div *ngFor ="let in of counter(3) ;let i = index" class="no-border">
+                <!-- using the first value of string as a key for filtering data -->
+                  <td *ngIf = "items?.labels[i]?.name[0] =='C' " class="no-border">{{items?.labels[i]?.name.slice(3)}}</td> 
+              </div>
+          </td>
+          <td>
+              <div *ngFor ="let in of counter(3) ;let i = index"class="no-border">
+                  <td *ngIf = "items?.labels[i]?.name[0] =='P' "class="no-border">{{items?.labels[i]?.name.slice(3)}}</td>
+              </div>
+          </td>
+          <td>
+          <div *ngFor ="let in of counter(3) ;let i = index"class="no-border">
+              <td *ngIf = "items?.labels[i]?.name[0] =='T' "class="no-border">{{items.labels[i]?.name.slice(3)}}</td>
+          </div>
+          </td>
+          <td>{{ items?.assignee?.login}}</td>
+          <td>{{ items.state }}</td>
+      </tr>
+
+      
+      </tbody>
+  </table>   
+   
+  
+</div>
+
+
+</body>
